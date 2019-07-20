@@ -1,0 +1,5 @@
+﻿ACTION_ADDPROGRAM=Add program
+ACTION_EDITPROGRAM=Edit parameters
+ACTION_REMOVEPROGRAM=Remove
+ACTION_RUNPROGRAM=Run
+LABEL_ADDITEMS=Please add links from menu, or drag files to the panel

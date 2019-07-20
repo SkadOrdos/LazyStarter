@@ -1,0 +1,123 @@
+﻿<DataGrid x:Class="LazyStarter.DataItemsGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LazyStarter"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="400" Name="dataGrid"
+                  AutoGenerateColumns="False"
+                  Background="WhiteSmoke"
+                  BorderBrush="White" 
+                  BorderThickness="0"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  GridLinesVisibility="Horizontal"
+                  HorizontalGridLinesBrush="WhiteSmoke"          
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  IsReadOnly="True"
+                  RowHeight="26">
+
+    <DataGrid.Resources>
+        <Style TargetType="{x:Type DataGridCell}">
+            <Setter Property="BorderBrush" Value="WhiteSmoke" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Margin" Value="-1"></Setter>
+        </Style>
+    </DataGrid.Resources>
+
+    <DataGrid.Columns>
+        <DataGridTemplateColumn Header="Active" CanUserResize="False" SortMemberPath="Checked" Block.TextAlignment="Center">
+            <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                    <local:ImageButton Grid.Column="0" Margin="5,2"
+                    Command="{Binding CheckedChangeCommand}"
+                    ImageSource="{Binding CurrentStatusImage,
+                    Converter={StaticResource ImageConverter}}"
+                    VerticalAlignment="Center" HorizontalAlignment="Center">
+                    </local:ImageButton>
+                </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+
+        <DataGridTemplateColumn Header="Name" Width="1*" MinWidth="50" SortMemberPath="Text">
+            <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                    <TextBlock Name="nameBox" Text="{Binding Text}" 
+                           Margin="5,5,5,5"
+                           FontSize="14" FontFamily="Calibri"
+                           VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+            <DataGridTemplateColumn.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>                                                
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                             <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                        
+                        <DataTrigger Binding="{Binding Exist}" Value="False">
+                            <Setter Property="Foreground" Value="DarkRed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGridTemplateColumn.CellStyle>
+        </DataGridTemplateColumn>
+
+        <DataGridTemplateColumn Header="Path" Width="3*" MinWidth="50" SortMemberPath="Path">
+            <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=Path}" 
+                           Margin="5,5,5,5"
+                           FontSize="14" FontFamily="Calibri"
+                           VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+
+        <DataGridTemplateColumn Header="Remove" CanUserResize="False" Block.TextAlignment="Center">
+            <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                    <local:ImageButton Grid.Column="4" Margin="3,2,7,2"
+                    Command="{Binding DeleteCommand}"
+                    ImageSource="{Binding ImageRemoveInactive,
+                    Converter={StaticResource ImageConverter}}"
+                    ImageSourceHover="{Binding ImageRemove,
+                    Converter={StaticResource ImageConverter}}"
+                    VerticalAlignment="Center" HorizontalAlignment="Center">
+                    </local:ImageButton>
+                </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+    </DataGrid.Columns>
+
+
+    <DataGrid.CellStyle>
+        <Style TargetType="{x:Type DataGridCell}">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </DataGrid.CellStyle>
+
+    <DataGrid.RowStyle>
+        <Style TargetType="{x:Type DataGridRow}">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="LightGray"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightGray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </DataGrid.RowStyle>
+
+</DataGrid>

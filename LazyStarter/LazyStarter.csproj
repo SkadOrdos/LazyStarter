@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{58EF017F-9A5A-4B3D-BDC3-D391748617AD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LazyStarter</RootNamespace>
+    <AssemblyName>LazyStarter</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>chart.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LazyStarter.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Controls\CheckedListItem.cs" />
+    <Compile Include="Controls\CheckedListBox.xaml.cs">
+      <DependentUpon>CheckedListBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SimpleBinding.cs" />
+    <Compile Include="Controls\Interfaces\ICheckedListItem.cs" />
+    <Compile Include="Controls\DataItemsGrid.xaml.cs">
+      <DependentUpon>DataItemsGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ImageButton.xaml.cs">
+      <DependentUpon>ImageButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Interfaces\IVisibility.cs" />
+    <Compile Include="Controls\Menu\BaseContainerModel.cs" />
+    <Compile Include="Controls\Menu\BaseMenuItemModel.cs" />
+    <Compile Include="Controls\Menu\IMenuItem.cs" />
+    <Compile Include="Controls\Menu\ISubMenu.cs" />
+    <Compile Include="Controls\Menu\XtraContextMenu.xaml.cs">
+      <DependentUpon>XtraContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Menu\XtraMenu.xaml.cs">
+      <DependentUpon>XtraMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Menu\MenuItemModel.cs" />
+    <Compile Include="Controls\Menu\SeparatorModel.cs" />
+    <Compile Include="Controls\MouseOverItemArgs.cs" />
+    <Compile Include="Data\ProgramExecutor.cs" />
+    <Compile Include="Icons\ImageToBitmapSourceConverter.cs" />
+    <Compile Include="Icons\ResourceIcons.cs" />
+    <Compile Include="Common\ResourceHelper.cs" />
+    <Compile Include="Utils\Converters\BoolReverseConverter.cs" />
+    <Compile Include="Utils\Converters\BoolVisibilityConverter.cs" />
+    <Compile Include="Utils\Locales\ILocalize.cs" />
+    <Compile Include="Data\IProgram.cs" />
+    <Compile Include="Data\ProgramItem.cs" />
+    <Compile Include="Model\MainModel.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Utils\LinqExtentions.cs" />
+    <Compile Include="Utils\Converters\ResizeElementConverter.cs" />
+    <Compile Include="Utils\Locales\LocaleConstants.cs" />
+    <Compile Include="Utils\Locales\LocaleHandler.cs" />
+    <Compile Include="Utils\Locales\LocalePlugin.cs" />
+    <Compile Include="Data\Period.cs" />
+    <Compile Include="Utils\PluginLoader.cs" />
+    <Compile Include="Utils\VcUtils.cs" />
+    <Page Include="Controls\CheckedListBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DataItemsGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ImageButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Menu\XtraContextMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Menu\XtraMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\BaseViewModel.cs" />
+    <Compile Include="Common\DelegateCommand.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <EmbeddedResource Include="Utils\Locales\Lang\english.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\check.png" />
+    <EmbeddedResource Include="Icons\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\uncheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="chart.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\delete_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\add.png" />
+    <EmbeddedResource Include="Icons\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\arrow_down.png" />
+    <EmbeddedResource Include="Icons\arrow_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\arrow_down_gray.png" />
+    <EmbeddedResource Include="Icons\arrow_up_gray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\shell_run.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
